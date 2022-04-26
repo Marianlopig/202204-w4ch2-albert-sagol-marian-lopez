@@ -12,15 +12,19 @@ function App() {
   const handleClick = (clickOnLetter) => {
     clickOnLetter.preventDefault();
     const clicked = clickOnLetter.target.textContent;
-    if (lettersClicked.filter((letter) => letter === clicked).length < 1) {
-      setLettersClicked(lettersClicked.push(clicked));
+
+    const letterWasClicked = lettersClicked.findIndex(
+      (letter) => letter === clicked
+    );
+    if (letterWasClicked === -1) {
+      setLettersClicked([...lettersClicked, clicked]);
     }
   };
   return (
     <>
       <div className="container">
         <div className="main-container">
-          <UsedLetters lettersUsed={["a", "b", "c"]} />
+          <UsedLetters lettersUsed={lettersClicked} />
           <Hangman />
         </div>
         <GuessLetters />
