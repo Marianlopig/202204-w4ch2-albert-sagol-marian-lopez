@@ -5,6 +5,7 @@ import Letters from "./components/Letters/Letters";
 import Result from "./components/Result/Result";
 import UsedLetters from "./components/UsedLetters/UsedLetters";
 import alphabet from "./data/alphabet";
+import words from "./data/words";
 
 function App() {
   const [lettersClicked, setLettersClicked] = useState([]);
@@ -16,6 +17,12 @@ function App() {
       setLettersClicked(lettersClicked.push(clicked));
     }
   };
+  const getRandomWord = () => {
+    const randomIndex = Math.floor(Math.random() * (words.length - 1));
+    return words[randomIndex];
+  };
+  const randomWord = getRandomWord();
+
   return (
     <>
       <div className="container">
@@ -23,7 +30,7 @@ function App() {
           <UsedLetters lettersUsed={["a", "b", "c"]} />
           <Hangman />
         </div>
-        <GuessLetters />
+        <GuessLetters word={randomWord} />
         <Result text="You are dead" />
         <Letters alphabet={alphabet} action={handleClick} />
       </div>

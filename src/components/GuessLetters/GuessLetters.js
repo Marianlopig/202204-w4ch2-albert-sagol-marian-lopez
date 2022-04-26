@@ -1,13 +1,14 @@
 import "./GuessLetters.css";
 
-const GuessLetters = () => {
+const GuessLetters = ({ word, chossenLetters }) => {
   return (
     <ul className="guess-letters">
-      <li className="guess-letter empty"></li>
-      <li className="guess-letter">A</li>
-      <li className="guess-letter empty"></li>
-      <li className="guess-letter">A</li>
-      <li className="guess-letter empty"></li>
+      {word.split("").map((letter) => (
+        <li className="guess-letter empty">-</li>
+      ))}
+
+      {/* <li className="guess-letter empty"></li>
+      <li className="guess-letter">A</li> */}
     </ul>
   );
 };
