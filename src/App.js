@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GuessLetters from "./components/GuessLetters/GuessLetters";
 import Hangman from "./components/Hangman/Hangman";
 import Letters from "./components/Letters/Letters";
@@ -9,6 +9,12 @@ import words from "./data/words";
 
 function App() {
   const [lettersClicked, setLettersClicked] = useState([]);
+  const [randomWord, setRandomWord] = useState("");
+
+  useEffect(() => {
+    const randomWord = getRandomWord();
+    setRandomWord(randomWord);
+  }, []);
 
   const handleClick = (clickOnLetter) => {
     clickOnLetter.preventDefault();
@@ -25,7 +31,6 @@ function App() {
     const randomIndex = Math.floor(Math.random() * (words.length - 1));
     return words[randomIndex];
   };
-  const randomWord = getRandomWord();
 
   return (
     <>
@@ -34,7 +39,7 @@ function App() {
           <UsedLetters lettersUsed={lettersClicked} />
           <Hangman />
         </div>
-        <GuessLetters word={randomWord} />
+        <GuessLetters word={randomWord} chossenLetters={lettersClicked} />
         <Result text="You are dead" />
         <Letters alphabet={alphabet} action={handleClick} />
       </div>
