@@ -14,7 +14,7 @@ function App() {
     <>
       <div className="container">
         <div className="main-container">
-          <UsedLetters />
+          <UsedLetters lettersUsed={["a", "b", "c"]} />
           <Hangman />
         </div>
         <GuessLetters />

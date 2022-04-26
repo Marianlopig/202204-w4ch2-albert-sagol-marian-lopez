@@ -7,7 +7,11 @@ const UsedLetters = ({ lettersUsed }) => {
       <h2>Used letters</h2>
       <ul className="used-letters">
         {lettersUsed.map((letter) => {
-          return <li className="used-letter">{letter}, </li>;
+          return (
+            <li className="used-letter" key={letter}>
+              {letter},{" "}
+            </li>
+          );
         })}
       </ul>
     </section>
