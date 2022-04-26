@@ -16,7 +16,6 @@
   justify-content: center;
   align-items: flex-end;
   font-size: 33px;
-  justify-content: space-between;
 }
 .guess-letter.empty {
   border-bottom: 2px solid #fff;
