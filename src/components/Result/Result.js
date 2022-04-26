@@ -1,7 +1,7 @@
 import "./Result.css";
 import PropTypes from "prop-types";
 
-const Result = (text) => {
+const Result = ({ text }) => {
   return <section className="game-result">{text}</section>;
 };
 
