@@ -1,13 +1,14 @@
 import "./GuessLetters.css";
 
-const GuessLetters = () => {
+const GuessLetters = ({ word, chossenLetters }) => {
   return (
     <ul className="guess-letters">
-      <li className="guess-letter empty"></li>
-      <li className="guess-letter">A</li>
-      <li className="guess-letter empty"></li>
-      <li className="guess-letter">A</li>
-      <li className="guess-letter empty"></li>
+      {word.split("").map((letter) => {
+        if (chossenLetters.includes(letter.toUpperCase())) {
+          return <li className="guess-letter">{letter.toUpperCase}</li>;
+        }
+        return <li className="guess-letter empty">*</li>;
+      })}
     </ul>
   );
 };
