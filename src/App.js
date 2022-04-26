@@ -1,3 +1,4 @@
+import { useState } from "react";
 import GuessLetters from "./components/GuessLetters/GuessLetters";
 import Hangman from "./components/Hangman/Hangman";
 import Letters from "./components/Letters/Letters";
@@ -6,9 +7,14 @@ import UsedLetters from "./components/UsedLetters/UsedLetters";
 import alphabet from "./data/alphabet";
 
 function App() {
+  const [lettersClicked, setLettersClicked] = useState([]);
+
   const handleClick = (clickOnLetter) => {
     clickOnLetter.preventDefault();
-    return clickOnLetter.target.textContent;
+    const clicked = clickOnLetter.target.textContent;
+    if (lettersClicked.filter((letter) => letter === clicked).length < 1) {
+      setLettersClicked(lettersClicked.push(clicked));
+    }
   };
   return (
     <>
